@@ -169,8 +169,8 @@ export const TaskManagement: React.FC = () => {
     <div className="space-y-6">
       {/* Toast Notification */}
       {notification && (
-        <div className="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 text-sm">
-          <CheckCircle className="w-4 h-4 text-emerald-400" />
+        <div className="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 text-sm animate-in fade-in">
+          <CheckCircle className="w-4 h-4 text-blue-400" />
           <span>{notification}</span>
         </div>
       )}
@@ -178,7 +178,7 @@ export const TaskManagement: React.FC = () => {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 font-heading">
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 font-heading">
             Tugas Penilaian Antar Teman
           </h2>
           <p className="text-xs sm:text-sm text-slate-500">
@@ -188,7 +188,7 @@ export const TaskManagement: React.FC = () => {
 
         <button
           onClick={openAddModal}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-emerald-500/20 transition-colors self-start sm:self-auto"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-600/20 transition-colors self-start sm:self-auto cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Buat Tugas Baru</span>
@@ -205,11 +205,11 @@ export const TaskManagement: React.FC = () => {
           tasks.map((task) => (
             <div
               key={task.id}
-              className="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-xs hover:border-emerald-200 transition-all flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
+              className="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-xs hover:border-blue-200 transition-all flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
             >
               <div className="space-y-2.5 max-w-3xl">
                 <div className="flex items-center gap-2.5 flex-wrap">
-                  <span className="px-3 py-1 rounded-lg text-xs font-black bg-emerald-100 text-emerald-800">
+                  <span className="px-3 py-1 rounded-lg text-xs font-black bg-blue-100 text-blue-900">
                     Kelas {task.kelas}
                   </span>
                   <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700">
@@ -218,7 +218,7 @@ export const TaskManagement: React.FC = () => {
                   <span
                     className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
                       task.status === 'aktif'
-                        ? 'bg-emerald-50 text-emerald-700'
+                        ? 'bg-blue-50 text-blue-700'
                         : task.status === 'draft'
                         ? 'bg-amber-50 text-amber-700'
                         : 'bg-slate-100 text-slate-600'
@@ -248,7 +248,7 @@ export const TaskManagement: React.FC = () => {
                     Menilai: <strong className="text-slate-700">{task.jumlahTemanDinilai} Teman</strong>
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
+                    <CheckCircle className="w-3.5 h-3.5 text-blue-600" />
                     {task.indikatorIds.length} Indikator Digunakan
                   </span>
                   <span className="flex items-center gap-1.5">
@@ -263,7 +263,7 @@ export const TaskManagement: React.FC = () => {
                       </span>
                     )}
                     {task.izinkanEdit && (
-                      <span className="text-[11px] text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded-md">
+                      <span className="text-[11px] text-blue-600 font-semibold bg-blue-50 px-2 py-0.5 rounded-md">
                         Izinkan Edit
                       </span>
                     )}
@@ -320,7 +320,7 @@ export const TaskManagement: React.FC = () => {
                   onChange={(e) => setNama(e.target.value)}
                   placeholder="Contoh: Penilaian Antar Teman Passing Bola Basket"
                   required
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500 font-bold"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-500 font-bold"
                 />
               </div>
 
@@ -335,7 +335,7 @@ export const TaskManagement: React.FC = () => {
                     onChange={(e) => setMateri(e.target.value)}
                     placeholder="Contoh: Passing Bola Basket"
                     required
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-500"
                   />
                 </div>
 
@@ -346,7 +346,7 @@ export const TaskManagement: React.FC = () => {
                   <select
                     value={kelas}
                     onChange={(e) => setKelas(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500 font-bold"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-500 font-bold"
                   >
                     {classes.map((c) => (
                       <option key={c.id} value={c.nama}>
@@ -392,7 +392,7 @@ export const TaskManagement: React.FC = () => {
                   placeholder="Amati gerakan teman dengan teliti. Berikan penilaian berdasarkan indikator..."
                   rows={3}
                   required
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-500"
                 />
               </div>
 
@@ -410,7 +410,7 @@ export const TaskManagement: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleSelectAllIndicators}
-                    className="text-xs font-bold text-emerald-600 hover:text-emerald-700"
+                    className="text-xs font-bold text-blue-600 hover:text-blue-700"
                   >
                     {selectedIndicators.length === indicators.length ? 'Batal Pilih Semua' : 'Pilih Semua'}
                   </button>
@@ -424,7 +424,7 @@ export const TaskManagement: React.FC = () => {
                         key={ind.id}
                         className={`flex items-start gap-2.5 p-2.5 rounded-xl text-xs cursor-pointer transition-colors ${
                           isChecked
-                            ? 'bg-white border border-emerald-300 text-slate-900 shadow-2xs'
+                            ? 'bg-white border border-blue-400 text-slate-900 shadow-2xs'
                             : 'hover:bg-white/60 text-slate-600'
                         }`}
                       >
@@ -432,7 +432,7 @@ export const TaskManagement: React.FC = () => {
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => handleToggleIndicator(ind.id)}
-                          className="mt-0.5 rounded-md text-emerald-600 focus:ring-emerald-500"
+                          className="mt-0.5 rounded-md text-blue-600 focus:ring-blue-500"
                         />
                         <div>
                           <span className="font-bold text-slate-800">{ind.indikator}</span>
@@ -481,7 +481,7 @@ export const TaskManagement: React.FC = () => {
                     type="checkbox"
                     checked={bolehUploadVideo}
                     onChange={(e) => setBolehUploadVideo(e.target.checked)}
-                    className="rounded-md text-emerald-600"
+                    className="rounded-md text-blue-600"
                   />
                   <span className="text-slate-700 font-medium">
                     Bolehkan siswa mengunggah <strong>Video</strong> bukti gerakan
@@ -493,7 +493,7 @@ export const TaskManagement: React.FC = () => {
                     type="checkbox"
                     checked={bolehUploadFoto}
                     onChange={(e) => setBolehUploadFoto(e.target.checked)}
-                    className="rounded-md text-emerald-600"
+                    className="rounded-md text-blue-600"
                   />
                   <span className="text-slate-700 font-medium">
                     Bolehkan siswa mengunggah <strong>Foto</strong> bukti gerakan
@@ -505,7 +505,7 @@ export const TaskManagement: React.FC = () => {
                     type="checkbox"
                     checked={wajibBukti}
                     onChange={(e) => setWajibBukti(e.target.checked)}
-                    className="rounded-md text-emerald-600"
+                    className="rounded-md text-blue-600"
                   />
                   <span className="text-slate-700 font-medium">
                     Wajib unggah bukti sebelum mengirim penilaian
@@ -517,7 +517,7 @@ export const TaskManagement: React.FC = () => {
                     type="checkbox"
                     checked={izinkanEdit}
                     onChange={(e) => setIzinkanEdit(e.target.checked)}
-                    className="rounded-md text-emerald-600"
+                    className="rounded-md text-blue-600"
                   />
                   <span className="text-slate-700 font-medium">
                     Izinkan siswa mengedit penilaian sebelum batas waktu (Fitur Izinkan Edit)
@@ -535,7 +535,7 @@ export const TaskManagement: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-bold shadow-md shadow-emerald-500/20"
+                  className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-md shadow-blue-600/20"
                 >
                   {editingTask ? 'Simpan Perubahan' : 'Terbitkan Tugas'}
                 </button>

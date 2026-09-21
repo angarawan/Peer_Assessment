@@ -93,7 +93,7 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
       {/* Filter Toolbar (Section 21) */}
       <div className="bg-white p-5 rounded-3xl border border-slate-200/80 shadow-xs space-y-3">
         <div className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-          <Filter className="w-3.5 h-3.5 text-emerald-600" />
+          <Filter className="w-3.5 h-3.5 text-blue-600" />
           <span>Filter & Pencarian Hasil</span>
         </div>
 
@@ -104,7 +104,7 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
             <select
               value={selectedClass}
               onChange={(e) => setSelectedClass(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-emerald-500"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-blue-500"
             >
               <option value="Semua">Semua Kelas</option>
               {classes.map((c) => (
@@ -121,7 +121,7 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
             <select
               value={selectedTask}
               onChange={(e) => setSelectedTask(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-emerald-500 truncate"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-blue-500 truncate"
             >
               <option value="Semua">Semua Tugas</option>
               {tasks.map((t) => (
@@ -140,7 +140,7 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
               value={searchAssessor}
               onChange={(e) => setSearchAssessor(e.target.value)}
               placeholder="Cari nama penilai..."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-emerald-500"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-blue-500"
             />
           </div>
 
@@ -152,7 +152,7 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
               value={searchTarget}
               onChange={(e) => setSearchTarget(e.target.value)}
               placeholder="Cari yang dinilai..."
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-emerald-500"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-blue-500"
             />
           </div>
 
@@ -163,7 +163,7 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
               type="date"
               value={searchDate}
               onChange={(e) => setSearchDate(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-emerald-500"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-blue-500"
             />
           </div>
         </div>
@@ -202,7 +202,7 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
                     <td className="py-3.5 px-4 font-bold text-slate-900">
                       {a.assessorName}
                     </td>
-                    <td className="py-3.5 px-4 font-bold text-emerald-800">
+                    <td className="py-3.5 px-4 font-bold text-blue-800">
                       {a.targetName}
                     </td>
                     <td className="py-3.5 px-4">
@@ -214,7 +214,7 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
                       {a.taskTitle || 'Passing Bola Basket'}
                     </td>
                     <td className="py-3.5 px-4 text-center">
-                      <span className="inline-flex items-center justify-center font-extrabold px-2.5 py-1 rounded-xl bg-emerald-50 text-emerald-800 text-xs font-heading">
+                      <span className="inline-flex items-center justify-center font-extrabold px-2.5 py-1 rounded-xl bg-blue-50 text-blue-800 text-xs font-heading">
                         {a.averageScore} / 4
                       </span>
                     </td>
@@ -237,7 +237,7 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
                     <td className="py-3.5 px-4 text-center">
                       <button
                         onClick={() => setDetailRecord(a)}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold text-xs transition-colors"
+                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs transition-colors"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         <span>Buka</span>
@@ -257,7 +257,7 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
           <div className="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl max-h-[90vh] overflow-y-auto animate-in fade-in zoom-in-95">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center">
                   <Award className="w-5 h-5" />
                 </div>
                 <div>
@@ -292,14 +292,14 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
                   </p>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-100">
-                  <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider block mb-1">
+                <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-100">
+                  <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider block mb-1">
                     DATA YANG DINILAI
                   </span>
-                  <p className="text-base font-extrabold text-emerald-900">
+                  <p className="text-base font-extrabold text-blue-900">
                     {detailRecord.targetName}
                   </p>
-                  <p className="text-xs text-emerald-700 font-semibold mt-0.5">
+                  <p className="text-xs text-blue-700 font-semibold mt-0.5">
                     Kelas: {detailRecord.targetClass || detailRecord.assessorClass}
                   </p>
                 </div>
@@ -339,11 +339,11 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
                   <div className="flex items-center gap-3">
                     <span className="text-xs font-bold text-slate-500">
                       Rata-Rata:{' '}
-                      <strong className="text-emerald-700 font-heading text-sm">
+                      <strong className="text-blue-700 font-heading text-sm">
                         {detailRecord.averageScore} / 4
                       </strong>
                     </span>
-                    <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
+                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md">
                       Nilai 100: {detailRecord.finalScore100}
                     </span>
                   </div>
@@ -371,9 +371,9 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({
                         <span
                           className={`w-7 h-7 rounded-lg font-bold flex items-center justify-center text-white ${
                             s.score === 4
-                              ? 'bg-emerald-600'
-                              : s.score === 3
                               ? 'bg-blue-600'
+                              : s.score === 3
+                              ? 'bg-indigo-600'
                               : s.score === 2
                               ? 'bg-amber-500'
                               : 'bg-rose-500'

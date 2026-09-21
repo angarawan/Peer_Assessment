@@ -166,12 +166,12 @@ export const RecapScores: React.FC = () => {
             onClick={handleExportCSV}
             className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 text-xs sm:text-sm font-semibold shadow-2xs transition-colors"
           >
-            <Download className="w-4 h-4 text-emerald-600" />
+            <Download className="w-4 h-4 text-blue-600" />
             <span>Export Excel (CSV)</span>
           </button>
           <button
             onClick={handlePrint}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-emerald-500/20 transition-colors"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-600/20 transition-colors"
           >
             <Printer className="w-4 h-4" />
             <span>Cetak Rekap</span>
@@ -186,7 +186,7 @@ export const RecapScores: React.FC = () => {
           <select
             value={selectedClass}
             onChange={(e) => setSelectedClass(e.target.value)}
-            className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 font-bold focus:outline-hidden focus:border-emerald-500"
+            className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 font-bold focus:outline-hidden focus:border-blue-500"
           >
             <option value="Semua">Semua Kelas ({classes.length})</option>
             {classes.map((c) => (
@@ -202,7 +202,7 @@ export const RecapScores: React.FC = () => {
           <select
             value={selectedTaskId}
             onChange={(e) => setSelectedTaskId(e.target.value)}
-            className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-emerald-500 truncate"
+            className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-blue-500 truncate"
           >
             <option value="Semua">Semua Tugas ({tasks.length})</option>
             {tasks.map((t) => (
@@ -222,7 +222,7 @@ export const RecapScores: React.FC = () => {
               value={searchName}
               onChange={(e) => setSearchName(e.target.value)}
               placeholder="Ketik nama siswa..."
-              className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-emerald-500"
+              className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-blue-500"
             />
           </div>
         </div>
@@ -232,12 +232,12 @@ export const RecapScores: React.FC = () => {
       <div className="print:hidden bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs">
         <span className="font-bold text-slate-700">Kriteria Predikat:</span>
         <div className="flex flex-wrap items-center gap-3">
-          <span className="inline-flex items-center gap-1 text-emerald-800">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+          <span className="inline-flex items-center gap-1 text-blue-900">
+            <span className="w-2.5 h-2.5 rounded-full bg-blue-600" />
             <strong>3.50 – 4.00</strong> : Sangat Baik (A)
           </span>
-          <span className="inline-flex items-center gap-1 text-blue-800">
-            <span className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+          <span className="inline-flex items-center gap-1 text-indigo-800">
+            <span className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
             <strong>3.00 – 3.49</strong> : Baik (B)
           </span>
           <span className="inline-flex items-center gap-1 text-amber-800">
@@ -306,7 +306,7 @@ export const RecapScores: React.FC = () => {
                       </span>
                     </td>
                     <td className="py-3.5 px-3 text-center">
-                      <span className="inline-flex items-center justify-center font-black px-2.5 py-1 rounded-xl bg-emerald-50 text-emerald-800 text-xs font-heading">
+                      <span className="inline-flex items-center justify-center font-black px-2.5 py-1 rounded-xl bg-blue-50 text-blue-900 text-xs font-heading">
                         {row.assessorCount > 0 ? row.finalScore100 : '-'}
                       </span>
                     </td>
@@ -315,9 +315,9 @@ export const RecapScores: React.FC = () => {
                         <span
                           className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold ${
                             row.gradeLetter === 'A'
-                              ? 'bg-emerald-50 text-emerald-800'
+                              ? 'bg-blue-100 text-blue-900'
                               : row.gradeLetter === 'B'
-                              ? 'bg-blue-50 text-blue-800'
+                              ? 'bg-indigo-50 text-indigo-800'
                               : row.gradeLetter === 'C'
                               ? 'bg-amber-50 text-amber-800'
                               : 'bg-rose-50 text-rose-800'
@@ -333,7 +333,7 @@ export const RecapScores: React.FC = () => {
                       <span
                         className={`inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold ${
                           row.status === 'Lengkap'
-                            ? 'bg-emerald-100 text-emerald-800'
+                            ? 'bg-blue-100 text-blue-800'
                             : row.status === 'Belum Lengkap'
                             ? 'bg-amber-100 text-amber-800'
                             : 'bg-slate-100 text-slate-500'

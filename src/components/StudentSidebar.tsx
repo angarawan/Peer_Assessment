@@ -103,16 +103,16 @@ export const StudentSidebar: React.FC<StudentSidebarProps> = ({
           </div>
 
           {/* Student Profile Info Card */}
-          <div className="p-3.5 bg-linear-to-br from-emerald-50 to-teal-50/50 rounded-2xl border border-emerald-100/80 mb-4">
+          <div className="p-3.5 bg-linear-to-br from-blue-50 to-indigo-50/50 rounded-2xl border border-blue-100/80 mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-bold text-base shadow-sm shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-base shadow-sm shrink-0">
                 {user?.nama ? user.nama.charAt(0) : 'S'}
               </div>
               <div className="overflow-hidden">
                 <p className="font-extrabold text-xs sm:text-sm text-slate-800 truncate">
                   {user?.nama || 'Siswa PJOK'}
                 </p>
-                <div className="flex items-center gap-1.5 text-[11px] text-emerald-700 font-semibold mt-0.5">
+                <div className="flex items-center gap-1.5 text-[11px] text-blue-700 font-semibold mt-0.5">
                   <GraduationCap className="w-3.5 h-3.5 shrink-0" />
                   <span>Kelas {user?.kelas || 'XI 7'}</span>
                   {user?.nomorAbsen && <span>• No. {user.nomorAbsen}</span>}
@@ -135,7 +135,7 @@ export const StudentSidebar: React.FC<StudentSidebarProps> = ({
                   onClick={() => handleItemClick(item.id)}
                   className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-emerald-500 text-white shadow-md shadow-emerald-500/20'
+                      ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20'
                       : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                   }`}
                 >
@@ -149,7 +149,7 @@ export const StudentSidebar: React.FC<StudentSidebarProps> = ({
                       <span className="block leading-tight">{item.label}</span>
                       <span
                         className={`text-[10px] font-normal ${
-                          isActive ? 'text-emerald-100' : 'text-slate-400'
+                          isActive ? 'text-blue-100' : 'text-slate-400'
                         }`}
                       >
                         {item.description}
@@ -161,7 +161,7 @@ export const StudentSidebar: React.FC<StudentSidebarProps> = ({
                     <span
                       className={`px-2 py-0.5 rounded-full text-[10px] font-black shrink-0 ${
                         isActive
-                          ? 'bg-white text-emerald-700'
+                          ? 'bg-white text-blue-700'
                           : 'bg-rose-500 text-white'
                       }`}
                     >
@@ -177,7 +177,7 @@ export const StudentSidebar: React.FC<StudentSidebarProps> = ({
           <div className="mt-auto pt-6">
             <div className="p-3 bg-slate-50 rounded-2xl border border-slate-100 mb-3 space-y-1">
               <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
-                <HeartHandshake className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <HeartHandshake className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                 <span>Prinsip Menilai</span>
               </div>
               <p className="text-[11px] text-slate-500 leading-relaxed">

@@ -1,4 +1,14 @@
-import { UserProfile, ClassItem, IndicatorItem, AssessmentTask, AssessmentRecord } from '../types';
+import { UserProfile, ClassItem, IndicatorItem, AssessmentTask, AssessmentRecord, AppConfig } from '../types';
+
+export const INITIAL_APP_CONFIG: AppConfig = {
+  id: 'app_config',
+  appName: 'PENILAIAN ANTAR TEMAN PJOK',
+  schoolName: 'SMK / SMA PJOK',
+  motto: 'Sportif, Jujur, dan Menghargai Gerak Teman',
+  logoIconPreset: 'activity',
+  logoUrl: '',
+  updatedAt: new Date().toISOString()
+};
 
 export const INITIAL_CLASSES: ClassItem[] = [
   { id: 'class-xi-7', nama: 'XI 7', tingkat: 'XI', jurusan: 'MIPA', status: 'aktif' },
@@ -13,7 +23,9 @@ export const INITIAL_USERS: UserProfile[] = [
     uid: 'guru-1',
     nama: 'Guru PJOK',
     email: 'guru@pjok.sch.id',
+    password: 'guru123',
     role: 'guru',
+    nip: '198501152010011005',
     status: 'aktif',
     fotoProfil: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=150&auto=format&fit=crop&q=80',
     createdAt: '2026-09-01T08:00:00.000Z'
@@ -22,7 +34,9 @@ export const INITIAL_USERS: UserProfile[] = [
     uid: 'guru-2',
     nama: 'Guru PJOK (ianggarawan51)',
     email: 'ianggarawan51@guru.smk.belajar.id',
+    password: 'guru123',
     role: 'guru',
+    nip: '198805202014021003',
     status: 'aktif',
     fotoProfil: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=150&auto=format&fit=crop&q=80',
     createdAt: '2026-09-01T08:00:00.000Z'
@@ -31,6 +45,7 @@ export const INITIAL_USERS: UserProfile[] = [
     uid: 'murid-1',
     nama: 'Andi Pratama',
     email: 'andi@pjok.sch.id',
+    password: '123456',
     role: 'murid',
     kelas: 'XI 7',
     nomorAbsen: '01',
@@ -43,6 +58,7 @@ export const INITIAL_USERS: UserProfile[] = [
     uid: 'murid-2',
     nama: 'Budi Santoso',
     email: 'budi@pjok.sch.id',
+    password: '123456',
     role: 'murid',
     kelas: 'XI 7',
     nomorAbsen: '02',
@@ -55,6 +71,7 @@ export const INITIAL_USERS: UserProfile[] = [
     uid: 'murid-3',
     nama: 'Citra Lestari',
     email: 'citra@pjok.sch.id',
+    password: '123456',
     role: 'murid',
     kelas: 'XI 7',
     nomorAbsen: '03',
@@ -67,6 +84,7 @@ export const INITIAL_USERS: UserProfile[] = [
     uid: 'murid-4',
     nama: 'Dewi Anggraini',
     email: 'dewi@pjok.sch.id',
+    password: '123456',
     role: 'murid',
     kelas: 'XI 7',
     nomorAbsen: '04',
@@ -79,6 +97,7 @@ export const INITIAL_USERS: UserProfile[] = [
     uid: 'murid-5',
     nama: 'Eka Saputra',
     email: 'eka@pjok.sch.id',
+    password: '123456',
     role: 'murid',
     kelas: 'XI 7',
     nomorAbsen: '05',

@@ -8,7 +8,16 @@ import { StudentProfile } from './student/StudentProfile';
 import { AssessmentTask, AssessmentRecord } from '../types';
 import { DatabaseService, subscribeToDataChanges } from '../services/db';
 import { useAuth } from '../context/AuthContext';
-import { ClipboardList, Calendar, CheckCircle2, Clock, ArrowRight } from 'lucide-react';
+import {
+  ClipboardList,
+  Calendar,
+  CheckCircle2,
+  Clock,
+  ArrowRight,
+  Home,
+  History,
+  User
+} from 'lucide-react';
 
 interface StudentViewProps {
   isSidebarOpen?: boolean;
@@ -92,7 +101,7 @@ export const StudentView: React.FC<StudentViewProps> = ({
           onClose={onCloseSidebar}
           pendingTaskCount={pendingCount}
         />
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto w-full overflow-y-auto">
+        <main className="flex-1 p-3 sm:p-6 lg:p-8 max-w-4xl mx-auto w-full overflow-y-auto">
           <StudentAssessmentForm
             task={activeTaskForForm}
             existingRecord={editingRecord}
@@ -105,8 +114,8 @@ export const StudentView: React.FC<StudentViewProps> = ({
   }
 
   return (
-    <div className="min-h-[calc(100vh-5rem)] flex">
-      {/* Student Sidebar for Desktop & Mobile Toggle */}
+    <div className="min-h-[calc(100vh-5rem)] flex relative">
+      {/* Student Sidebar for Desktop & Mobile Slide-in */}
       <StudentSidebar
         currentTab={currentTab}
         onSelectTab={setCurrentTab}
@@ -117,7 +126,7 @@ export const StudentView: React.FC<StudentViewProps> = ({
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-y-auto w-full">
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-5xl mx-auto w-full">
+        <main className="flex-1 p-3.5 sm:p-6 lg:p-8 max-w-5xl mx-auto w-full pb-24 lg:pb-8">
           {currentTab === 'home' && (
             <StudentHome
               onNavigateTab={setCurrentTab}
@@ -126,20 +135,20 @@ export const StudentView: React.FC<StudentViewProps> = ({
           )}
 
           {currentTab === 'tasks' && (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div>
-                <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 font-heading">
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 font-heading">
                   Daftar Tugas Penilaian Kelas {user?.kelas || 'XI 7'}
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500">
-                  Pilih tugas penilaian gerak di bawah ini untuk menilai teman sekelas
+                  Pilih tugas penilaian gerak di bawah ini untuk menilai teman sekelasmu
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {tasks.length === 0 ? (
-                  <div className="bg-white p-12 text-center rounded-3xl border border-slate-200 text-slate-400 text-sm">
-                    Belum ada tugas aktif untuk kelasmu.
+                  <div className="bg-white p-8 sm:p-12 text-center rounded-2xl sm:rounded-3xl border border-slate-200 text-slate-400 text-sm">
+                    Belum ada tugas aktif untuk kelasmu saat ini.
                   </div>
                 ) : (
                   tasks.map((task) => {
@@ -150,19 +159,19 @@ export const StudentView: React.FC<StudentViewProps> = ({
                     return (
                       <div
                         key={task.id}
-                        className="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-xs hover:border-emerald-200 transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                        className="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs hover:border-blue-300 transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4"
                       >
                         <div className="space-y-2">
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <span className="px-2.5 py-0.5 rounded-lg text-xs font-bold bg-emerald-100 text-emerald-800">
+                          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                            <span className="px-2.5 py-0.5 rounded-md text-[11px] sm:text-xs font-bold bg-blue-100 text-blue-900">
                               Kelas {task.kelas}
                             </span>
-                            <span className="px-2.5 py-0.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-700">
+                            <span className="px-2.5 py-0.5 rounded-md text-[11px] sm:text-xs font-bold bg-slate-100 text-slate-700">
                               Materi: {task.materi}
                             </span>
                             <span
-                              className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
-                                isDone ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'
+                              className={`px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-bold ${
+                                isDone ? 'bg-blue-50 text-blue-700' : 'bg-amber-50 text-amber-700'
                               }`}
                             >
                               {isDone
@@ -171,7 +180,7 @@ export const StudentView: React.FC<StudentViewProps> = ({
                             </span>
                           </div>
 
-                          <h3 className="text-lg font-extrabold text-slate-900 font-heading">
+                          <h3 className="text-base sm:text-lg font-black text-slate-900 font-heading">
                             {task.nama}
                           </h3>
 
@@ -179,10 +188,10 @@ export const StudentView: React.FC<StudentViewProps> = ({
                             {task.instruksi}
                           </p>
 
-                          <div className="flex items-center gap-3 text-xs text-slate-500 pt-1">
+                          <div className="flex items-center gap-3 text-xs text-slate-500 pt-1 flex-wrap">
                             <span className="flex items-center gap-1">
                               <Calendar className="w-3.5 h-3.5 text-slate-400" />
-                              Batas: {task.batasWaktu}
+                              Batas: <strong className="text-slate-700">{task.batasWaktu}</strong>
                             </span>
                             <span>•</span>
                             <span>{task.indikatorIds.length} Indikator Gerak</span>
@@ -191,7 +200,7 @@ export const StudentView: React.FC<StudentViewProps> = ({
 
                         <button
                           onClick={() => handleStartAssessment(task)}
-                          className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-500/20 transition-all self-end md:self-center shrink-0 cursor-pointer"
+                          className="w-full md:w-auto min-h-[44px] flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl sm:rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-blue-600/20 transition-all self-stretch md:self-center shrink-0 cursor-pointer"
                         >
                           <span>{isDone ? 'Nilai Teman Lain' : 'Mulai Menilai'}</span>
                           <ArrowRight className="w-4 h-4" />
@@ -213,6 +222,71 @@ export const StudentView: React.FC<StudentViewProps> = ({
           {currentTab === 'profile' && <StudentProfile />}
         </main>
       </div>
+
+      {/* Sleek Native-App Like Mobile Bottom Dock for Students */}
+      <nav
+        aria-label="Navigasi Bawah Siswa"
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-md border-t border-slate-200/90 px-3 py-1.5 shadow-lg flex items-center justify-around"
+      >
+        <button
+          type="button"
+          onClick={() => setCurrentTab('home')}
+          className={`flex flex-col items-center justify-center min-h-[44px] px-3 py-1 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            currentTab === 'home'
+              ? 'text-blue-600 font-bold'
+              : 'text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <Home className={`w-5 h-5 ${currentTab === 'home' ? 'stroke-[2.5]' : ''}`} />
+          <span className="text-[10px] mt-0.5">Beranda</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setCurrentTab('tasks')}
+          className={`relative flex flex-col items-center justify-center min-h-[44px] px-3 py-1 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            currentTab === 'tasks'
+              ? 'text-blue-600 font-bold'
+              : 'text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <div className="relative">
+            <ClipboardList className={`w-5 h-5 ${currentTab === 'tasks' ? 'stroke-[2.5]' : ''}`} />
+            {pendingCount > 0 && (
+              <span className="absolute -top-1 -right-2 bg-rose-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">
+                {pendingCount}
+              </span>
+            )}
+          </div>
+          <span className="text-[10px] mt-0.5">Tugas</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setCurrentTab('history')}
+          className={`flex flex-col items-center justify-center min-h-[44px] px-3 py-1 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            currentTab === 'history'
+              ? 'text-blue-600 font-bold'
+              : 'text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <History className={`w-5 h-5 ${currentTab === 'history' ? 'stroke-[2.5]' : ''}`} />
+          <span className="text-[10px] mt-0.5">Riwayat</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setCurrentTab('profile')}
+          className={`flex flex-col items-center justify-center min-h-[44px] px-3 py-1 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            currentTab === 'profile'
+              ? 'text-blue-600 font-bold'
+              : 'text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <User className={`w-5 h-5 ${currentTab === 'profile' ? 'stroke-[2.5]' : ''}`} />
+          <span className="text-[10px] mt-0.5">Profil</span>
+        </button>
+      </nav>
     </div>
   );
 };

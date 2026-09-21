@@ -131,8 +131,8 @@ export const IndicatorManagement: React.FC = () => {
     <div className="space-y-6">
       {/* Toast */}
       {notification && (
-        <div className="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 text-sm">
-          <CheckCircle className="w-4 h-4 text-emerald-400" />
+        <div className="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 text-sm animate-in fade-in">
+          <CheckCircle className="w-4 h-4 text-blue-400" />
           <span>{notification}</span>
         </div>
       )}
@@ -140,11 +140,11 @@ export const IndicatorManagement: React.FC = () => {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold mb-1.5">
-            <CheckSquare className="w-3.5 h-3.5 text-emerald-600" />
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-800 text-xs font-bold mb-1.5">
+            <CheckSquare className="w-3.5 h-3.5 text-blue-600" />
             <span>Kewenangan Penuh Guru</span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 font-heading">
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 font-heading">
             Indikator Penilaian Gerak
           </h2>
           <p className="text-xs sm:text-sm text-slate-500">
@@ -154,7 +154,7 @@ export const IndicatorManagement: React.FC = () => {
 
         <button
           onClick={openAddModal}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-emerald-500/20 transition-colors self-start sm:self-auto"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-600/20 transition-colors self-start sm:self-auto cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Buat Indikator Baru</span>
@@ -162,11 +162,11 @@ export const IndicatorManagement: React.FC = () => {
       </div>
 
       {/* Info notice about student permission */}
-      <div className="p-4 bg-emerald-50/80 rounded-2xl border border-emerald-200/70 flex items-start gap-3 text-xs sm:text-sm text-emerald-900">
-        <Info className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+      <div className="p-4 bg-blue-50/80 rounded-2xl border border-blue-200/70 flex items-start gap-3 text-xs sm:text-sm text-blue-950">
+        <Info className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
         <div>
           <p className="font-bold">Keamanan & Integritas Penilaian</p>
-          <p className="text-xs text-emerald-700 mt-0.5">
+          <p className="text-xs text-blue-800 mt-0.5">
             Indikator penilaian hanya dapat diatur dan diubah oleh Guru PJOK. Siswa tidak memiliki akses untuk mengubah rubrik maupun bobot penilaian.
           </p>
         </div>
@@ -182,19 +182,19 @@ export const IndicatorManagement: React.FC = () => {
           indicators.map((ind, index) => (
             <div
               key={ind.id}
-              className="bg-white p-5 rounded-3xl border border-slate-200/80 shadow-xs hover:border-emerald-200 transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+              className="bg-white p-5 rounded-3xl border border-slate-200/80 shadow-xs hover:border-blue-200 transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
             >
               <div className="flex items-start gap-3.5">
                 {/* Order badge with up/down arrows */}
                 <div className="flex flex-col items-center">
-                  <span className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-800 font-extrabold flex items-center justify-center text-sm">
+                  <span className="w-8 h-8 rounded-xl bg-blue-50 text-blue-800 font-extrabold flex items-center justify-center text-sm">
                     {ind.urutan}
                   </span>
                   <div className="flex items-center gap-0.5 mt-1">
                     <button
                       disabled={index === 0}
                       onClick={() => handleMove(index, 'up')}
-                      className="p-0.5 text-slate-400 hover:text-slate-700 disabled:opacity-30"
+                      className="p-0.5 text-slate-400 hover:text-slate-700 disabled:opacity-30 cursor-pointer"
                       title="Geser ke atas"
                     >
                       <ArrowUp className="w-3.5 h-3.5" />
@@ -202,7 +202,7 @@ export const IndicatorManagement: React.FC = () => {
                     <button
                       disabled={index === indicators.length - 1}
                       onClick={() => handleMove(index, 'down')}
-                      className="p-0.5 text-slate-400 hover:text-slate-700 disabled:opacity-30"
+                      className="p-0.5 text-slate-400 hover:text-slate-700 disabled:opacity-30 cursor-pointer"
                       title="Geser ke bawah"
                     >
                       <ArrowDown className="w-3.5 h-3.5" />
@@ -217,9 +217,9 @@ export const IndicatorManagement: React.FC = () => {
                     </span>
                     <button
                       onClick={() => handleToggleStatus(ind)}
-                      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${
+                      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold cursor-pointer ${
                         ind.status === 'aktif'
-                          ? 'bg-emerald-50 text-emerald-700'
+                          ? 'bg-blue-50 text-blue-700'
                           : 'bg-rose-50 text-rose-700'
                       }`}
                     >
@@ -252,7 +252,7 @@ export const IndicatorManagement: React.FC = () => {
                       </span>
                     </div>
                     <div className="p-2 rounded-xl bg-slate-50 border border-slate-100">
-                      <span className="font-bold text-emerald-600 block mb-0.5">[4] Sangat Baik</span>
+                      <span className="font-bold text-indigo-600 block mb-0.5">[4] Sangat Baik</span>
                       <span className="text-slate-600 text-[10px] line-clamp-2">
                         {ind.skala?.[4] || 'Sangat baik dan sempurna'}
                       </span>
@@ -265,14 +265,14 @@ export const IndicatorManagement: React.FC = () => {
               <div className="flex items-center gap-1.5 self-end md:self-center shrink-0">
                 <button
                   onClick={() => openEditModal(ind)}
-                  className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"
+                  className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors cursor-pointer"
                 >
                   <Edit2 className="w-3.5 h-3.5" />
                   <span>Edit</span>
                 </button>
                 <button
                   onClick={() => handleDelete(ind.id, ind.indikator)}
-                  className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors"
+                  className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors cursor-pointer"
                   title="Hapus Indikator"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -293,7 +293,7 @@ export const IndicatorManagement: React.FC = () => {
               </h3>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100"
+                className="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -310,7 +310,7 @@ export const IndicatorManagement: React.FC = () => {
                     value={judulPenilaian}
                     onChange={(e) => setJudulPenilaian(e.target.value)}
                     required
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-600"
                   />
                 </div>
                 <div>
@@ -322,7 +322,7 @@ export const IndicatorManagement: React.FC = () => {
                     value={materi}
                     onChange={(e) => setMateri(e.target.value)}
                     required
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-600"
                   />
                 </div>
               </div>
@@ -337,7 +337,7 @@ export const IndicatorManagement: React.FC = () => {
                   placeholder="Contoh: Posisi kedua tangan memegang bola di depan dada dengan jari terbuka"
                   required
                   rows={2}
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-600"
                 />
               </div>
 
@@ -351,7 +351,7 @@ export const IndicatorManagement: React.FC = () => {
                     min="1"
                     value={urutan}
                     onChange={(e) => setUrutan(Number(e.target.value))}
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500 font-bold"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-600 font-bold"
                   />
                 </div>
                 <div>
@@ -361,7 +361,7 @@ export const IndicatorManagement: React.FC = () => {
                   <select
                     value={status}
                     onChange={(e) => setStatus(e.target.value as 'aktif' | 'nonaktif')}
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-600"
                   >
                     <option value="aktif">Aktif Digunakan</option>
                     <option value="nonaktif">Nonaktif / Arsip</option>
@@ -372,7 +372,7 @@ export const IndicatorManagement: React.FC = () => {
               {/* Rubric scale descriptions (1-4) as per Section 9 */}
               <div className="pt-2 border-t border-slate-100">
                 <div className="flex items-center gap-1.5 mb-2">
-                  <SlidersHorizontal className="w-4 h-4 text-emerald-600" />
+                  <SlidersHorizontal className="w-4 h-4 text-blue-600" />
                   <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
                     Deskripsi Skala Penilaian (1 - 4)
                   </span>
@@ -416,7 +416,7 @@ export const IndicatorManagement: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] font-bold text-emerald-700 mb-0.5">
+                    <label className="block text-[11px] font-bold text-indigo-700 mb-0.5">
                       Skala [4] - Sangat Baik
                     </label>
                     <input
@@ -433,13 +433,13 @@ export const IndicatorManagement: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 text-sm font-semibold"
+                  className="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 text-sm font-semibold cursor-pointer"
                 >
                   Batal
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-bold shadow-md shadow-emerald-500/20"
+                  className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-md shadow-blue-600/20 cursor-pointer"
                 >
                   {editingIndicator ? 'Simpan Perubahan' : 'Buat Indikator'}
                 </button>

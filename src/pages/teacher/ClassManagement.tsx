@@ -103,8 +103,8 @@ export const ClassManagement: React.FC = () => {
     <div className="space-y-6">
       {/* Toast Notification */}
       {notification && (
-        <div className="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 text-sm">
-          <CheckCircle className="w-4 h-4 text-emerald-400" />
+        <div className="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 text-sm animate-in fade-in">
+          <CheckCircle className="w-4 h-4 text-blue-400" />
           <span>{notification}</span>
         </div>
       )}
@@ -112,7 +112,7 @@ export const ClassManagement: React.FC = () => {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 font-heading">
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 font-heading">
             Data Rombongan Belajar (Kelas)
           </h2>
           <p className="text-xs sm:text-sm text-slate-500">
@@ -122,7 +122,7 @@ export const ClassManagement: React.FC = () => {
 
         <button
           onClick={openAddModal}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-emerald-500/20 transition-colors self-start sm:self-auto"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-600/20 transition-colors self-start sm:self-auto cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Tambah Kelas Baru</span>
@@ -136,7 +136,7 @@ export const ClassManagement: React.FC = () => {
           return (
             <div
               key={c.id}
-              className="bg-white p-5 rounded-3xl border border-slate-200/80 shadow-xs hover:border-emerald-200 transition-all flex flex-col justify-between"
+              className="bg-white p-5 rounded-3xl border border-slate-200/80 shadow-xs hover:border-blue-200 transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
@@ -145,9 +145,9 @@ export const ClassManagement: React.FC = () => {
                   </span>
                   <button
                     onClick={() => handleToggleStatus(c)}
-                    className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold transition-colors ${
+                    className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold transition-colors cursor-pointer ${
                       c.status === 'aktif'
-                        ? 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
+                        ? 'bg-blue-50 text-blue-700 hover:bg-blue-100'
                         : 'bg-rose-50 text-rose-700 hover:bg-rose-100'
                     }`}
                   >
@@ -170,7 +170,7 @@ export const ClassManagement: React.FC = () => {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-600">
-                  <Users className="w-4 h-4 text-emerald-600" />
+                  <Users className="w-4 h-4 text-blue-600" />
                   <span className="font-bold text-slate-800">{studentCount} Siswa</span>
                   <span className="text-slate-400">terdaftar di kelas ini</span>
                 </div>
@@ -224,7 +224,7 @@ export const ClassManagement: React.FC = () => {
                   onChange={(e) => setNama(e.target.value)}
                   placeholder="Contoh: XI 7"
                   required
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500 font-bold"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-600 font-bold"
                 />
               </div>
 
@@ -236,7 +236,7 @@ export const ClassManagement: React.FC = () => {
                   <select
                     value={tingkat}
                     onChange={(e) => setTingkat(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-600"
                   >
                     <option value="X">Kelas X (10)</option>
                     <option value="XI">Kelas XI (11)</option>
@@ -251,7 +251,7 @@ export const ClassManagement: React.FC = () => {
                   <select
                     value={status}
                     onChange={(e) => setStatus(e.target.value as 'aktif' | 'nonaktif')}
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-600"
                   >
                     <option value="aktif">Aktif</option>
                     <option value="nonaktif">Nonaktif</option>
@@ -268,7 +268,7 @@ export const ClassManagement: React.FC = () => {
                   value={jurusan}
                   onChange={(e) => setJurusan(e.target.value)}
                   placeholder="Contoh: MIPA, IPS, Teknik, atau Umum"
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-emerald-500"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:bg-white focus:border-blue-600"
                 />
               </div>
 
@@ -282,7 +282,7 @@ export const ClassManagement: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-bold shadow-md shadow-emerald-500/20"
+                  className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-md shadow-blue-600/20 cursor-pointer"
                 >
                   {editingClass ? 'Simpan Perubahan' : 'Tambah Kelas'}
                 </button>

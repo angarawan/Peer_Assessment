@@ -101,9 +101,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <button
                   key={item.id}
                   onClick={() => handleItemClick(item.id)}
-                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-emerald-500 text-white shadow-md shadow-emerald-500/20'
+                      ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
                       : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                   }`}
                 >
@@ -116,9 +116,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
           {/* Bottom Card / Info */}
           <div className="mt-auto pt-6">
-            <div className="p-3 bg-emerald-50 rounded-2xl border border-emerald-100 mb-3">
-              <p className="text-xs font-bold text-emerald-900">Kurikulum Merdeka PJOK</p>
-              <p className="text-[11px] text-emerald-700 mt-0.5">
+            <div className="p-3 bg-indigo-50/70 rounded-2xl border border-indigo-100 mb-3">
+              <p className="text-xs font-bold text-indigo-950">Kurikulum Merdeka PJOK</p>
+              <p className="text-[11px] text-indigo-700 mt-0.5">
                 Model Asesmen Formatif Antar Teman (Peer Assessment)
               </p>
             </div>

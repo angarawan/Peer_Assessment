@@ -202,18 +202,18 @@ export const Analytics: React.FC = () => {
           </div>
         </div>
 
-        {/* 2. Indikator Yang Dikuasai Mayoritas (Section 23 #2) */}
+        {/* 2. Indikator Yang Dikuasai Mayoritas */}
         <div className="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-xs">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
                 <TrendingUp className="w-4 h-4" />
               </div>
               <h3 className="font-bold text-slate-900 text-sm font-heading">
                 Indikator Dikuasai Mayoritas Murid
               </h3>
             </div>
-            <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
+            <span className="text-[11px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">
               Sangat Baik
             </span>
           </div>
@@ -225,14 +225,14 @@ export const Analytics: React.FC = () => {
                   <span className="font-bold text-slate-800 line-clamp-1 max-w-[240px]">
                     {item.indicator.indikator}
                   </span>
-                  <span className="font-extrabold text-emerald-700 font-heading">
+                  <span className="font-extrabold text-blue-700 font-heading">
                     {item.average} / 4.00
                   </span>
                 </div>
 
                 <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden flex">
                   <div
-                    className="bg-emerald-500 h-full rounded-full transition-all duration-500"
+                    className="bg-blue-600 h-full rounded-full transition-all duration-500"
                     style={{ width: `${(item.average / 4) * 100}%` }}
                   />
                 </div>
@@ -247,7 +247,7 @@ export const Analytics: React.FC = () => {
         </div>
       </div>
 
-      {/* 3. Grafik Rata-Rata Per Kelas (Section 23 #3) */}
+      {/* 3. Grafik Rata-Rata Per Kelas */}
       <div className="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-xs">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
@@ -280,7 +280,7 @@ export const Analytics: React.FC = () => {
 
               <div className="w-full h-4 bg-slate-100 rounded-full overflow-hidden p-0.5">
                 <div
-                  className="bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-600 h-full rounded-full transition-all duration-700"
+                  className="bg-linear-to-r from-blue-600 via-indigo-600 to-violet-600 h-full rounded-full transition-all duration-700"
                   style={{ width: `${Math.max(8, cls.final100)}%` }}
                 />
               </div>

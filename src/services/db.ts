@@ -3,19 +3,22 @@ import {
   ClassItem,
   IndicatorItem,
   AssessmentTask,
-  AssessmentRecord
+  AssessmentRecord,
+  AppConfig
 } from '../types';
 import {
   INITIAL_CLASSES,
   INITIAL_USERS,
   INITIAL_INDICATORS,
   INITIAL_TASKS,
-  INITIAL_ASSESSMENTS
+  INITIAL_ASSESSMENTS,
+  INITIAL_APP_CONFIG
 } from './seedData';
 import { db, storage, isFirebaseConfigured } from '../lib/firebase';
 import {
   collection,
   doc,
+  getDoc,
   getDocs,
   setDoc,
   deleteDoc,
@@ -34,6 +37,7 @@ const LS_CLASSES = 'pjok_data_classes';
 const LS_INDICATORS = 'pjok_data_indicators';
 const LS_TASKS = 'pjok_data_tasks';
 const LS_ASSESSMENTS = 'pjok_data_assessments';
+const LS_APP_CONFIG = 'pjok_data_app_config';
 
 // Event listener subscribers for reactive updates across the app
 type ListenerCallback = () => void;
@@ -383,6 +387,58 @@ export const DatabaseService = {
     return this.uploadEvidence(file, path || 'assessments', 'upload');
   },
 
+  // --- APP CONFIG & LOGO ---
+  async getAppConfig(): Promise<AppConfig> {
+    if (isFirebaseConfigured() && db) {
+      try {
+        const snap = await getDoc(doc(db, 'settings', 'app_config'));
+        if (snap.exists()) {
+          return { ...INITIAL_APP_CONFIG, ...(snap.data() as AppConfig) };
+        }
+      } catch (err) {
+        console.warn('Firestore getAppConfig error, using local:', err);
+      }
+    }
+    const stored = localStorage.getItem(LS_APP_CONFIG);
+    if (stored) {
+      try {
+        return { ...INITIAL_APP_CONFIG, ...JSON.parse(stored) };
+      } catch {
+        return INITIAL_APP_CONFIG;
+      }
+    }
+    return INITIAL_APP_CONFIG;
+  },
+
+  async saveAppConfig(config: Partial<AppConfig>): Promise<AppConfig> {
+    const current = await this.getAppConfig();
+    const updated: AppConfig = {
+      ...current,
+      ...config,
+      updatedAt: new Date().toISOString()
+    };
+
+    if (isFirebaseConfigured() && db) {
+      try {
+        await setDoc(doc(db, 'settings', 'app_config'), updated, { merge: true });
+      } catch (err) {
+        console.warn('Firestore saveAppConfig error:', err);
+      }
+    }
+
+    try {
+      localStorage.setItem(LS_APP_CONFIG, JSON.stringify(updated));
+      notifySubscribers();
+    } catch (err) {
+      console.error('Error saving app config to local storage', err);
+    }
+    return updated;
+  },
+
+  async resetAppConfig(): Promise<AppConfig> {
+    return this.saveAppConfig(INITIAL_APP_CONFIG);
+  },
+
   async resetToSeedData(): Promise<void> {
     this.resetToDefaults();
   },
@@ -394,11 +450,13 @@ export const DatabaseService = {
     localStorage.removeItem(LS_INDICATORS);
     localStorage.removeItem(LS_TASKS);
     localStorage.removeItem(LS_ASSESSMENTS);
+    localStorage.removeItem(LS_APP_CONFIG);
     localStorage.setItem(LS_USERS, JSON.stringify(INITIAL_USERS));
     localStorage.setItem(LS_CLASSES, JSON.stringify(INITIAL_CLASSES));
     localStorage.setItem(LS_INDICATORS, JSON.stringify(INITIAL_INDICATORS));
     localStorage.setItem(LS_TASKS, JSON.stringify(INITIAL_TASKS));
     localStorage.setItem(LS_ASSESSMENTS, JSON.stringify(INITIAL_ASSESSMENTS));
+    localStorage.setItem(LS_APP_CONFIG, JSON.stringify(INITIAL_APP_CONFIG));
     notifySubscribers();
   }
 };

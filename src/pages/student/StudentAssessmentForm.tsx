@@ -263,9 +263,9 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
       </button>
 
       {/* Task Summary Card */}
-      <div className="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-xs space-y-3">
+      <div className="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs space-y-3">
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="px-2.5 py-1 rounded-lg text-xs font-black bg-emerald-100 text-emerald-800">
+          <span className="px-2.5 py-1 rounded-lg text-xs font-black bg-blue-100 text-blue-900">
             Kelas {task.kelas}
           </span>
           <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700">
@@ -278,22 +278,22 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
           )}
         </div>
 
-        <h2 className="text-xl sm:text-2xl font-black text-slate-900 font-heading">
+        <h2 className="text-lg sm:text-2xl font-black text-slate-900 font-heading">
           {task.nama}
         </h2>
 
-        <div className="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-100 text-xs sm:text-sm text-emerald-950">
-          <p className="font-bold mb-1 text-emerald-800">Instruksi Guru PJOK:</p>
+        <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-blue-50/70 border border-blue-100 text-xs sm:text-sm text-blue-950">
+          <p className="font-bold mb-1 text-blue-900">Instruksi Guru PJOK:</p>
           <p className="leading-relaxed">{task.instruksi}</p>
         </div>
       </div>
 
       {/* Main Assessment Form */}
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
         {/* Step 1: Choose Peer (Dropdown) */}
-        <div className="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-xs space-y-3">
+        <div className="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs space-y-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
+            <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-900 flex items-center justify-center font-bold text-sm">
               1
             </div>
             <div>
@@ -311,7 +311,7 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
             disabled={!!existingRecord}
             onChange={(e) => setSelectedTargetId(e.target.value)}
             required
-            className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-800 focus:outline-hidden focus:bg-white focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+            className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-800 focus:outline-hidden focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
           >
             <option value="">-- Pilih Teman Sekelas ({task.kelas}) --</option>
             {classmates.map((c) => {
@@ -332,7 +332,7 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
 
           {selectedTargetId && (
             <div className="p-3 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-2 text-xs text-slate-600">
-              <UserCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+              <UserCheck className="w-4 h-4 text-blue-600 shrink-0" />
               <span>
                 Kamu sedang menilai:{' '}
                 <strong className="text-slate-900">
@@ -343,11 +343,11 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
           )}
         </div>
 
-        {/* Step 2: Movement Indicators & Big Touch-Friendly Buttons (Section 13) */}
-        <div className="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-xs space-y-4">
+        {/* Step 2: Movement Indicators & Big Touch-Friendly Buttons */}
+        <div className="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
+              <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-900 flex items-center justify-center font-bold text-sm">
                 2
               </div>
               <div>
@@ -355,7 +355,7 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
                   Indikator Gerak & Penilaian Skala (1 - 4) *
                 </h3>
                 <p className="text-xs text-slate-400">
-                  Pilih angka 1 sampai 4 untuk setiap indikator gerak yang diamati
+                  Pilih angka 1 sampai 4 untuk setiap indikator gerak
                 </p>
               </div>
             </div>
@@ -365,14 +365,14 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
                 Rata-Rata
               </span>
-              <span className="text-lg sm:text-xl font-black text-emerald-600 font-heading">
+              <span className="text-lg sm:text-xl font-black text-blue-600 font-heading">
                 {liveAverage} <span className="text-xs text-slate-400">/ 4</span>
               </span>
             </div>
           </div>
 
           {/* Indicator Item Cards */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {taskIndicators.map((ind, idx) => {
               const currentVal = scores[ind.id];
               const desc =
@@ -390,10 +390,10 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
               return (
                 <div
                   key={ind.id}
-                  className="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200/80 space-y-3"
+                  className="p-3.5 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200/90 space-y-3"
                 >
-                  <div className="flex items-start gap-3">
-                    <span className="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-800 font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="flex items-start gap-2.5 sm:gap-3">
+                    <span className="w-6 h-6 rounded-lg bg-blue-100 text-blue-900 font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
                       {idx + 1}
                     </span>
                     <div className="space-y-0.5">
@@ -404,8 +404,8 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
                     </div>
                   </div>
 
-                  {/* 4 Big Touch-Friendly Buttons (Section 13) */}
-                  <div className="grid grid-cols-4 gap-2 pt-1">
+                  {/* 4 Big Touch-Friendly Buttons */}
+                  <div className="grid grid-cols-4 gap-1.5 sm:gap-2 pt-1">
                     {[1, 2, 3, 4].map((num) => {
                       const isSelected = currentVal === num;
                       return (
@@ -413,25 +413,25 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
                           key={num}
                           type="button"
                           onClick={() => handleSelectScore(ind.id, num)}
-                          className={`py-3.5 rounded-2xl font-black text-base sm:text-lg flex flex-col items-center justify-center transition-all cursor-pointer ${
+                          className={`py-3 sm:py-3.5 rounded-xl sm:rounded-2xl font-black text-base sm:text-lg flex flex-col items-center justify-center transition-all cursor-pointer min-h-[48px] ${
                             isSelected
                               ? num === 4
-                                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30 scale-102 ring-2 ring-emerald-600 ring-offset-2'
+                                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 scale-102 ring-2 ring-indigo-600 ring-offset-2'
                                 : num === 3
-                                ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 scale-102 ring-2 ring-blue-600 ring-offset-2'
+                                ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 scale-102 ring-2 ring-blue-600 ring-offset-2'
                                 : num === 2
-                                ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/30 scale-102 ring-2 ring-amber-500 ring-offset-2'
-                                : 'bg-rose-500 text-white shadow-lg shadow-rose-500/30 scale-102 ring-2 ring-rose-500 ring-offset-2'
+                                ? 'bg-amber-500 text-white shadow-md shadow-amber-500/30 scale-102 ring-2 ring-amber-500 ring-offset-2'
+                                : 'bg-rose-500 text-white shadow-md shadow-rose-500/30 scale-102 ring-2 ring-rose-500 ring-offset-2'
                               : 'bg-white text-slate-700 border border-slate-200 hover:border-slate-300 hover:bg-slate-100/60'
                           }`}
                         >
                           <span>{num}</span>
                           <span
-                            className={`text-[10px] font-bold ${
+                            className={`text-[9px] sm:text-[10px] font-bold ${
                               isSelected ? 'text-white/90' : 'text-slate-400'
                             }`}
                           >
-                            {num === 4 ? 'Sangat Baik' : num === 3 ? 'Baik' : num === 2 ? 'Berkembang' : 'Bimbingan'}
+                            {num === 4 ? 'Sgt Baik' : num === 3 ? 'Baik' : num === 2 ? 'Berkembang' : 'Bimbingan'}
                           </span>
                         </button>
                       );
@@ -451,10 +451,10 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
           </div>
         </div>
 
-        {/* Step 3: Masukan / Feedback (Section 13) */}
-        <div className="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-xs space-y-3">
+        {/* Step 3: Masukan / Feedback */}
+        <div className="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs space-y-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
+            <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-900 flex items-center justify-center font-bold text-sm">
               3
             </div>
             <div>
@@ -462,7 +462,7 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
                 Masukan / Catatan Perbaikan untuk Teman *
               </label>
               <p className="text-xs text-slate-400">
-                Berikan masukan yang sopan, jelas, dan membangun agar temanmu dapat memperbaiki gerakannya
+                Berikan masukan yang sopan, jelas, dan membangun
               </p>
             </div>
           </div>
@@ -473,7 +473,7 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
             rows={4}
             required
             placeholder="Contoh: Gerakan tanganmu saat mendorong bola sudah kuat dan lurus ke depan, namun posisi awal lutut sebaiknya ditekuk sedikit lebih rendah agar dorongan lebih stabil."
-            className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:bg-white focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 leading-relaxed"
+            className="w-full p-3.5 sm:p-4 bg-slate-50 border border-slate-200 rounded-2xl text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 leading-relaxed"
           />
 
           <div className="flex items-center gap-2 text-[11px] text-slate-400 italic">
@@ -482,12 +482,12 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
           </div>
         </div>
 
-        {/* Step 4: Video / Photo Upload (Section 15 - 20) */}
+        {/* Step 4: Video / Photo Upload */}
         {(task.bolehUploadVideo || task.bolehUploadFoto) && (
-          <div className="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-xs space-y-4">
+          <div className="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
+                <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-900 flex items-center justify-center font-bold text-sm">
                   4
                 </div>
                 <div>
@@ -502,7 +502,7 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
 
               <div className="flex items-center gap-1.5">
                 {task.bolehUploadVideo && (
-                  <span className="p-1.5 bg-purple-50 text-purple-700 rounded-lg text-xs font-bold flex items-center gap-1">
+                  <span className="p-1.5 bg-indigo-50 text-indigo-700 rounded-lg text-xs font-bold flex items-center gap-1">
                     <Video className="w-3.5 h-3.5" /> Video
                   </span>
                 )}
@@ -516,9 +516,9 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
 
             {/* Upload Area / Preview */}
             {!evidenceUrl ? (
-              <label className="border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-center gap-2 cursor-pointer bg-slate-50/50 hover:bg-emerald-50/20 transition-all text-center">
+              <label className="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-center gap-2 cursor-pointer bg-slate-50/50 hover:bg-blue-50/20 transition-all text-center">
                 <div className="w-12 h-12 rounded-2xl bg-white shadow-xs border border-slate-200 flex items-center justify-center text-slate-500">
-                  <UploadCloud className="w-6 h-6 text-emerald-600" />
+                  <UploadCloud className="w-6 h-6 text-blue-600" />
                 </div>
                 <p className="text-xs sm:text-sm font-bold text-slate-800 mt-1">
                   Klik untuk memilih file foto atau video dari perangkat
@@ -548,7 +548,7 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
                   <button
                     type="button"
                     onClick={handleRemoveMedia}
-                    className="absolute top-3 right-3 p-2 rounded-xl bg-slate-900/80 text-white hover:bg-rose-600 transition-colors"
+                    className="absolute top-3 right-3 p-2 rounded-xl bg-slate-900/80 text-white hover:bg-rose-600 transition-colors cursor-pointer"
                     title="Hapus Bukti"
                   >
                     <X className="w-4 h-4" />
@@ -560,7 +560,7 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
                   <button
                     type="button"
                     onClick={handleRemoveMedia}
-                    className="text-rose-600 font-bold hover:underline"
+                    className="text-rose-600 font-bold hover:underline cursor-pointer"
                   >
                     Ganti File
                   </button>
@@ -583,7 +583,7 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
           <button
             type="submit"
             disabled={submitting || uploading}
-            className="w-full py-4 px-6 rounded-2xl bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white font-extrabold text-base shadow-lg shadow-emerald-500/25 transition-all cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full min-h-[48px] py-3.5 sm:py-4 px-6 rounded-2xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-black text-sm sm:text-base shadow-lg shadow-blue-600/25 transition-all cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {submitting ? (
               <span>Menyimpan Penilaian...</span>
@@ -599,11 +599,11 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
         </div>
       </form>
 
-      {/* Success Modal (Section 12 Step 8) */}
+      {/* Success Modal */}
       {showSuccessModal && (
         <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl max-w-md w-full p-6 text-center shadow-2xl animate-in zoom-in-95">
-            <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-4">
               <CheckCircle2 className="w-10 h-10" />
             </div>
 
@@ -616,14 +616,14 @@ export const StudentAssessmentForm: React.FC<StudentAssessmentFormProps> = ({
             </p>
 
             <div className="mt-4 p-3 bg-slate-50 rounded-2xl border border-slate-100 text-xs text-slate-600">
-              Rata-rata skor yang kamu berikan: <strong className="text-emerald-700">{liveAverage} / 4</strong> (Nilai: {live100})
+              Rata-rata skor yang kamu berikan: <strong className="text-blue-700">{liveAverage} / 4</strong> (Nilai: {live100})
             </div>
 
             <div className="mt-6 flex flex-col gap-2">
               <button
                 type="button"
                 onClick={onSuccess}
-                className="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-md transition-colors"
+                className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition-colors cursor-pointer"
               >
                 Kembali ke Beranda Tugas
               </button>

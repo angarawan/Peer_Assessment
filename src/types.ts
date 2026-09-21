@@ -4,6 +4,8 @@ export interface UserProfile {
   uid: string;
   nama: string;
   email: string;
+  password?: string;
+  nip?: string;
   role: UserRole;
   kelas?: string;
   nomorAbsen?: string;
@@ -11,6 +13,16 @@ export interface UserProfile {
   fotoProfil?: string;
   status: 'aktif' | 'nonaktif';
   createdAt?: string;
+}
+
+export interface AppConfig {
+  id?: string;
+  appName: string;
+  schoolName: string;
+  motto: string;
+  logoUrl?: string;
+  logoIconPreset?: 'activity' | 'trophy' | 'medal' | 'flame' | 'basketball';
+  updatedAt?: string;
 }
 
 export interface ClassItem {

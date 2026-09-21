@@ -74,41 +74,41 @@ export const StudentHome: React.FC<StudentHomeProps> = ({
   const score100Received = avgReceived ? Math.round((Number(avgReceived) / 4) * 100) : null;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Welcome Banner */}
-      <div className="bg-gradient-to-tr from-emerald-600 to-teal-500 rounded-3xl p-6 sm:p-8 text-white shadow-lg shadow-emerald-600/15 relative overflow-hidden">
+      <div className="bg-gradient-to-tr from-indigo-700 via-blue-600 to-sky-500 rounded-2xl sm:rounded-3xl p-5 sm:p-8 text-white shadow-lg shadow-indigo-600/15 relative overflow-hidden">
         <div className="relative z-10 max-w-xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-xs text-xs font-semibold mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-xs text-xs font-semibold mb-2 sm:mb-3">
             <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-            <span>Selamat Belajar & Berolahraga</span>
+            <span>Asesmen Formatif PJOK</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-extrabold font-heading tracking-tight">
+          <h2 className="text-xl sm:text-3xl font-extrabold font-heading tracking-tight leading-tight">
             Halo, {user?.nama}! 👋
           </h2>
 
-          <p className="mt-1 text-sm sm:text-base text-emerald-50">
-            Siswa Kelas <strong className="text-white underline decoration-emerald-300">{user?.kelas || 'XI 7'}</strong> (Absen {user?.nomorAbsen || '01'})
+          <p className="mt-1 text-xs sm:text-base text-blue-100">
+            Siswa Kelas <strong className="text-white underline decoration-sky-300">{user?.kelas || 'XI 7'}</strong> (No. Absen {user?.nomorAbsen || '01'})
           </p>
 
-          <p className="mt-2 text-xs sm:text-sm text-emerald-100 italic">
-            &ldquo;Belajar menilai, belajar memperbaiki. Berikan masukan yang jujur, santun, dan membangun untuk teman sekelasmu.&rdquo;
+          <p className="mt-2 text-xs sm:text-sm text-blue-100/90 italic leading-relaxed">
+            &ldquo;Belajar menilai, belajar memperbaiki gerak bersama teman secara sportif dan objektif.&rdquo;
           </p>
 
-          <div className="mt-5 flex flex-wrap gap-2.5">
+          <div className="mt-4 sm:mt-5 flex flex-col xs:flex-row gap-2 sm:gap-2.5">
             <button
               onClick={() => onNavigateTab('tasks')}
-              className="px-4 py-2.5 rounded-xl bg-white text-emerald-800 text-xs sm:text-sm font-bold shadow-md hover:bg-emerald-50 transition-colors inline-flex items-center gap-2"
+              className="px-4 py-2.5 rounded-xl bg-white text-indigo-900 text-xs sm:text-sm font-bold shadow-md hover:bg-blue-50 transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
             >
-              <ClipboardList className="w-4 h-4 text-emerald-600" />
-              <span>Lihat Tugas Penilaian</span>
+              <ClipboardList className="w-4 h-4 text-indigo-600" />
+              <span>Tugas Penilaian Saya</span>
             </button>
             <button
               onClick={() => onNavigateTab('history')}
-              className="px-4 py-2.5 rounded-xl bg-emerald-800/60 hover:bg-emerald-800/80 text-white text-xs sm:text-sm font-semibold backdrop-blur-xs transition-colors inline-flex items-center gap-2"
+              className="px-4 py-2.5 rounded-xl bg-indigo-950/40 hover:bg-indigo-950/60 text-white text-xs sm:text-sm font-semibold backdrop-blur-xs transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Award className="w-4 h-4" />
-              <span>Riwayat & Masukan Teman</span>
+              <Award className="w-4 h-4 text-sky-300" />
+              <span>Riwayat Penilaian</span>
             </button>
           </div>
         </div>
@@ -118,41 +118,41 @@ export const StudentHome: React.FC<StudentHomeProps> = ({
       </div>
 
       {/* Overview Metric Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs">
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4">
+        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200/90 shadow-xs">
+          <span className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">
             Telah Menilai
           </span>
           <div className="flex items-baseline gap-1.5">
-            <span className="text-2xl sm:text-3xl font-extrabold text-emerald-600 font-heading">
+            <span className="text-2xl sm:text-3xl font-black text-blue-600 font-heading">
               {myAssessmentsGiven.length}
             </span>
             <span className="text-xs font-semibold text-slate-500">Teman</span>
           </div>
         </div>
 
-        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs">
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">
+        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200/90 shadow-xs">
+          <span className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">
             Dinilai Teman
           </span>
           <div className="flex items-baseline gap-1.5">
-            <span className="text-2xl sm:text-3xl font-extrabold text-indigo-600 font-heading">
+            <span className="text-2xl sm:text-3xl font-black text-indigo-600 font-heading">
               {myAssessmentsReceived.length}
             </span>
             <span className="text-xs font-semibold text-slate-500">Kali</span>
           </div>
         </div>
 
-        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs col-span-2 sm:col-span-1">
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">
-            Rata-Rata Capaian Saya
+        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200/90 shadow-xs col-span-2 sm:col-span-1">
+          <span className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">
+            Rata-Rata Capaian
           </span>
           <div className="flex items-baseline gap-1.5">
-            <span className="text-2xl sm:text-3xl font-extrabold text-slate-800 font-heading">
+            <span className="text-2xl sm:text-3xl font-black text-slate-800 font-heading">
               {avgReceived || '—'}
             </span>
             {avgReceived && (
-              <span className="text-xs font-bold text-emerald-600">
+              <span className="text-xs font-bold text-blue-600">
                 / 4 ({score100Received} / 100)
               </span>
             )}
@@ -160,7 +160,7 @@ export const StudentHome: React.FC<StudentHomeProps> = ({
         </div>
       </div>
 
-      {/* Active Tasks List (Section 11) */}
+      {/* Active Tasks List */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <div>
@@ -168,18 +168,17 @@ export const StudentHome: React.FC<StudentHomeProps> = ({
               Tugas Penilaian Aktif
             </h3>
             <p className="text-xs text-slate-500">
-              Pilih tugas gerak yang ditugaskan oleh guru untuk mulai mengamati dan menilai temanmu
+              Pilih tugas gerak yang ditugaskan guru untuk mengamati dan menilai gerakan temanmu
             </p>
           </div>
         </div>
 
         {tasks.length === 0 ? (
-          <div className="bg-white p-10 text-center rounded-3xl border border-slate-200 text-slate-400 text-sm">
+          <div className="bg-white p-8 text-center rounded-2xl border border-slate-200 text-slate-400 text-sm">
             Saat ini belum ada tugas penilaian aktif untuk kelasmu.
           </div>
         ) : (
           tasks.map((task) => {
-            // Count how many peers this student has already evaluated for this task
             const evaluatedCount = myAssessmentsGiven.filter((a) => a.taskId === task.id).length;
             const requiredCount = task.jumlahTemanDinilai || 2;
             const isCompleted = evaluatedCount >= requiredCount;
@@ -187,38 +186,38 @@ export const StudentHome: React.FC<StudentHomeProps> = ({
             return (
               <div
                 key={task.id}
-                className="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-xs hover:border-emerald-300 transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                className="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs hover:border-blue-300 transition-all flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4"
               >
                 <div className="space-y-2 max-w-xl">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="px-2.5 py-0.5 rounded-lg text-xs font-bold bg-emerald-100 text-emerald-800">
+                  <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                    <span className="px-2 py-0.5 rounded-md text-[11px] sm:text-xs font-bold bg-blue-100 text-blue-900">
                       Kelas {task.kelas}
                     </span>
-                    <span className="px-2.5 py-0.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-700">
-                      Materi: {task.materi}
+                    <span className="px-2 py-0.5 rounded-md text-[11px] sm:text-xs font-bold bg-slate-100 text-slate-700">
+                      {task.materi}
                     </span>
                     <span
-                      className={`px-2.5 py-0.5 rounded-full text-xs font-bold flex items-center gap-1 ${
+                      className={`px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-bold flex items-center gap-1 ${
                         isCompleted
-                          ? 'bg-emerald-50 text-emerald-700'
+                          ? 'bg-blue-50 text-blue-700'
                           : 'bg-amber-50 text-amber-700'
                       }`}
                     >
                       {isCompleted ? (
                         <>
-                          <CheckCircle2 className="w-3.5 h-3.5" />
-                          <span>Tugas Selesai ({evaluatedCount}/{requiredCount})</span>
+                          <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
+                          <span>Selesai ({evaluatedCount}/{requiredCount} Teman)</span>
                         </>
                       ) : (
                         <>
-                          <Clock className="w-3.5 h-3.5" />
+                          <Clock className="w-3.5 h-3.5 text-amber-600" />
                           <span>Perlu Menilai ({evaluatedCount}/{requiredCount})</span>
                         </>
                       )}
                     </span>
                   </div>
 
-                  <h4 className="text-base sm:text-lg font-extrabold text-slate-900">
+                  <h4 className="text-base sm:text-lg font-black text-slate-900 font-heading">
                     {task.nama}
                   </h4>
 
@@ -227,20 +226,20 @@ export const StudentHome: React.FC<StudentHomeProps> = ({
                     {task.instruksi}
                   </p>
 
-                  <div className="flex items-center gap-4 text-xs text-slate-500 pt-1">
+                  <div className="flex items-center gap-3 text-xs text-slate-500 pt-1 flex-wrap">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-3.5 h-3.5 text-slate-400" />
-                      Batas Waktu: <strong>{task.batasWaktu}</strong>
+                      Batas: <strong className="text-slate-700">{task.batasWaktu}</strong>
                     </span>
                     <span>•</span>
                     <span>{task.indikatorIds.length} Indikator Gerak</span>
                   </div>
                 </div>
 
-                <div className="self-end md:self-center shrink-0">
+                <div className="pt-2 sm:pt-0 shrink-0">
                   <button
                     onClick={() => onStartAssessment(task)}
-                    className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-500/20 transition-all cursor-pointer"
+                    className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl sm:rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-blue-600/20 transition-all cursor-pointer"
                   >
                     <span>{isCompleted ? 'Nilai Teman Lain' : 'Mulai Menilai'}</span>
                     <ArrowRight className="w-4 h-4" />
@@ -252,9 +251,9 @@ export const StudentHome: React.FC<StudentHomeProps> = ({
         )}
       </div>
 
-      {/* Ethics & Peer Assessment Guide Card (Section 26) */}
-      <div className="p-5 rounded-3xl bg-linear-to-r from-teal-50 to-emerald-50 border border-emerald-200/70 shadow-xs flex items-start gap-4">
-        <div className="w-10 h-10 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
+      {/* Ethics & Peer Assessment Guide Card */}
+      <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-linear-to-r from-blue-50/80 to-indigo-50/50 border border-blue-200/70 shadow-xs flex items-start gap-3 sm:gap-4">
+        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-blue-600 text-white flex items-center justify-center shrink-0">
           <HeartHandshake className="w-5 h-5" />
         </div>
         <div className="space-y-1 text-xs">
@@ -262,10 +261,10 @@ export const StudentHome: React.FC<StudentHomeProps> = ({
             Etika Penilaian Antar Teman PJOK
           </h4>
           <p className="text-slate-600 leading-relaxed">
-            1. Nilailah gerakan teman berdasarkan <strong>indikator gerak sebenarnya</strong>, bukan karena kedekatan pertemanan.
+            1. Amati gerakan teman dengan teliti sesuai <strong>rubrik kriteria guru</strong> secara jujur dan objektif.
           </p>
           <p className="text-slate-600 leading-relaxed">
-            2. Tuliskan masukan yang <strong>santun, positif, dan membangun</strong> agar temanmu tahu bagian mana yang perlu diperbaiki.
+            2. Berikan masukan yang <strong>santun, sportif, dan memotivasi</strong> agar teman sekelas berkembang bersama.
           </p>
         </div>
       </div>
